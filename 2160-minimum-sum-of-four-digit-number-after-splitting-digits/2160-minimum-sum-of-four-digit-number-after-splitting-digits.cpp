@@ -3,8 +3,7 @@ public:
     int minimumSum(int num) {
         vector<int> ans;
         while(num>0){
-            int rem = num%10;
-            ans.push_back(rem);
+            ans.push_back(num%10);
             num /= 10;
         }
         sort(ans.begin(),ans.end());
