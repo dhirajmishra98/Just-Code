@@ -11,11 +11,11 @@ public:
     
     bool checkPalindrome(string s){
         int i;
-        for(i=0;i<s.size();i++)
+        for(i=0;i<s.size()/2;i++)
             if(s[i] != s[s.size()-i-1])
                 break;
         
-        if(i==s.size())
+        if(i==s.size()/2)
             return true;
         else
             return false;
