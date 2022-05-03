@@ -3,7 +3,7 @@ public:
     vector<int> arrayRankTransform(vector<int>& arr) {
         if(arr.size()==0)
             return {};
-        
+        else{
        vector<int> temp = arr;
         sort(temp.begin(),temp.end());
         
@@ -15,9 +15,9 @@ public:
         }
         
         temp.clear();
-        vector<int> ans;
         for (const int &n : arr)
             temp.push_back(m[n] + 1);
         return temp;
+        }
     }
 };
