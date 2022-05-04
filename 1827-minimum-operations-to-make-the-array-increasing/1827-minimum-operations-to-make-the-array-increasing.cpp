@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minOperations(vector<int>& nums) {
-        if(nums.size() <= 0)
+        if(nums.size() <= 1)
             return 0; 
         
         int minop = 0;
