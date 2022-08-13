@@ -10,22 +10,16 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        int count = 0;
-        ListNode temp =  head;
-        while(temp!=null){
-            temp = temp.next;
-            count++;
+        ListNode fast = head;
+        ListNode slow = head;
+        if(head == null){
+            return head;
         }
-        // System.out.println(count);
         
-        ListNode dhiraj = head;
-        for(int i=1;i<=count;i++){
-            
-            if(i == (count/2)+1){
-                return dhiraj;
-            }
-            dhiraj = dhiraj.next;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        return head;
+        return slow;
     }
 }
