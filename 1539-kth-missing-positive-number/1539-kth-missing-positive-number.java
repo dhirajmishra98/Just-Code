@@ -1,20 +1,10 @@
 class Solution {
     public int findKthPositive(int[] arr, int k) {
-        // return approach1(arr,k);
-        return approach2(arr,k);
+
+        return solve(arr,k);
     }
     
-    static int approach1(int[] arr, int k){
-        for(int x : arr){
-            if(x < k)
-                k++;
-            else 
-                break;
-        }
-        return k;
-    }
-    
-    static int approach2(int[] arr, int k){
+    static int solve(int[] arr, int k){
         int start = 0;
         int end = arr.length - 1;
         
