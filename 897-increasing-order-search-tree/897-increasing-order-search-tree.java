@@ -14,6 +14,30 @@
  * }
  */
 class Solution {
+    static TreeNode curr;
+    public TreeNode increasingBST(TreeNode root) {
+        TreeNode dummynode = new TreeNode(0);
+        curr = dummynode;
+        inorder(root);
+        
+        return dummynode.right;
+    }
+    
+    static void inorder(TreeNode root){
+        if(root == null) 
+            return ;
+        
+        inorder(root.left);
+        root.left = null;
+        curr.right = root;
+        curr = curr.right;
+        inorder(root.right);
+    }
+}
+
+/*
+//Approach 1 - using extra space
+class Solution {
     public TreeNode increasingBST(TreeNode root) {
         ArrayList<Integer> ans = new ArrayList<>();
         inorder(root,ans);
@@ -35,3 +59,4 @@ class Solution {
         inorder(root.right, ans);
     }
 }
+*/
