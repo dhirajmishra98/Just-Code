@@ -13,6 +13,34 @@
  *     }
  * }
  */
+
+class Solution {
+    public TreeNode increasingBST(TreeNode root) {
+        TreeNode dummynode = new TreeNode(0);
+        TreeNode curr = dummynode;
+       
+        Stack<TreeNode> s = new Stack<>();
+        TreeNode temp = root;
+        while(temp!=null || s.size()>0){
+            while(temp!=null){
+                s.push(temp);
+                temp = temp.left;
+            }
+            
+            temp = s.pop();
+            curr.right = new TreeNode(temp.val);
+            curr = curr.right;
+
+            temp = temp.right;
+        }
+        
+        return dummynode.right;
+    }
+    
+}
+
+/*
+//Approach 2 - using no extra space, recursive
 class Solution {
     static TreeNode curr;
     public TreeNode increasingBST(TreeNode root) {
@@ -34,9 +62,10 @@ class Solution {
         inorder(root.right);
     }
 }
+*/
 
 /*
-//Approach 1 - using extra space
+//Approach 1 - using extra space, recursive
 class Solution {
     public TreeNode increasingBST(TreeNode root) {
         ArrayList<Integer> ans = new ArrayList<>();
