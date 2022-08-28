@@ -23,7 +23,8 @@ class Solution {
             return 0;
         }
         
-        sum = 2*sum + root.val;
+        // sum = 2*sum + root.val;
+        sum = sum<<1 | root.val;
         if(root.left==null && root.right==null){
             return sum;
         }
