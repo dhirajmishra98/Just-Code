@@ -16,6 +16,7 @@
 class Solution {
     public int sumRootToLeaf(TreeNode root) {
         return preOrder(root,0);
+        
     }
     
     private static int preOrder(TreeNode root, int sum){
@@ -28,6 +29,7 @@ class Solution {
         if(root.left==null && root.right==null){
             return sum;
         }
-        return preOrder(root.left,sum)+preOrder(root.right,sum);
+       return  preOrder(root.left,sum)+preOrder(root.right,sum);
+        
     }
 }
