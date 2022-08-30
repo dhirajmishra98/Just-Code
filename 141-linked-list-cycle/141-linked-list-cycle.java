@@ -16,8 +16,6 @@ public class Solution {
         if(head ==null)
             return false;
         do{
-//             if( slow.next==null || fast.next==null)
-//                 return false;
             if(slow.next==null)
                 return false;
             else
