@@ -14,11 +14,11 @@
  * }
  */
 class Solution {
-     int dhiraj = 0;
+     int goodNodes = 0;
     public int goodNodes(TreeNode root) {
         int max = Integer.MIN_VALUE;
         helper(root,max);
-        return dhiraj;
+        return goodNodes;
     }
     private void helper(TreeNode root, int max){
         if(root==null) return ;
@@ -27,10 +27,9 @@ class Solution {
             max = root.val;
         
         if(max == root.val){
-            dhiraj++;
+            goodNodes++;
         }
             
-        
         helper(root.left, max);
         helper(root.right, max);
     }
