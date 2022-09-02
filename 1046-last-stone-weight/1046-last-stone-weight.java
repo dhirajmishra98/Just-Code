@@ -6,17 +6,9 @@ class Solution {
             pq.add(stones[i]);
         }
         
-        while(pq.size()>0){
-            if(pq.size() == 1){
-                return pq.poll();
-            } 
-            int f = pq.poll();
-            int s = pq.poll();
-            
-            if(f!=s){
-                pq.add(Math.abs(f-s));
-            }
+        while(pq.size()>1){
+            pq.offer(pq.poll() - pq.poll());
         }
-        return 0;
+        return pq.poll();
     }
 }
