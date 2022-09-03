@@ -3,11 +3,10 @@ class Solution {
        int size = nums.length;
         int totalSum = (size * (size+1))/2;
         
-        int givenSum = 0;
         for(int x : nums){
-            givenSum += x;
+            totalSum -= x;
         }
         
-        return totalSum - givenSum;
+        return totalSum ;
     }
 }
