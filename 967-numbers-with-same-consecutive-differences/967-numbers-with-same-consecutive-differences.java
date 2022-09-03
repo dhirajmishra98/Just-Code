@@ -22,14 +22,14 @@ class Solution {
             return;
         }
         
-        int addedK = prevPointer+k;
-        if(addedK <= 9){
-            dfs(n,k,(currNum*10)+addedK, addedK, countDigits+1,res);
+        int nextDigit = prevPointer+k;
+        if(nextDigit <= 9){
+            dfs(n,k,(currNum*10)+nextDigit, nextDigit, countDigits+1,res);
         }
         
-        addedK= prevPointer-k;
-        if(k!=0 && addedK>=0 ){
-            dfs(n,k,(currNum*10)+addedK, addedK, countDigits+1, res);
+        nextDigit= prevPointer-k;
+        if(k!=0 && nextDigit>=0 && nextDigit<=9){
+            dfs(n,k,(currNum*10)+nextDigit, nextDigit, countDigits+1, res);
         }
     }
 }
