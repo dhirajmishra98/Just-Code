@@ -15,7 +15,16 @@
  */
 class Solution {
     public TreeNode pruneTree(TreeNode root) {
-        return containsOnes(root)?root:null;
+        // return containsOnes(root)?root:null;
+        
+        if(root==null) return null;
+        root.left = pruneTree(root.left);
+        root.right = pruneTree(root.right);
+        
+        if(root.val==0 && root.left==null && root.right==null)
+            root = null;
+        
+        return root;
     }
     
     private boolean containsOnes(TreeNode root){
