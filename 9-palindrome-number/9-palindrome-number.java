@@ -1,11 +1,13 @@
 class Solution {
     public boolean isPalindrome(int x) {
-        String str1 = Integer.toString(x);
-        String str2 = new StringBuilder().append(x).reverse().toString();
+//         String str1 = Integer.toString(x);
+//         String str2 = new StringBuilder().append(x).reverse().toString();
         
-        if(str1.equals(str2))
-            return true;
         
-        return false;
+       return Integer.toString(x).equals(new StringBuilder().append(x).reverse().toString()); 
+//         if(str1.equals(str2))
+//             return true;
+        
+//         return false;
     }
 }
