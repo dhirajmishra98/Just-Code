@@ -1,7 +1,7 @@
 class Solution {
     public int climbStairs(int n) {
-        // return tabulation(new int[n+1],n);
-        return memoization(new int[n+1],n);
+        return tabulation(new int[n+1],n);
+        // return memoization(new int[n+1],n);
     }
     
     private static int tabulation(int[] dp, int n){
