@@ -4,12 +4,15 @@ class Solution {
        int profit = 0;
         
         for(int i=1;i<arr.length;i++){
-            if(buy > arr[i]){
-                buy = arr[i];
-            }
-            if(profit < (arr[i]-buy)){
-                profit = arr[i]-buy;
-            }
+            // if(buy > arr[i]){
+            //     buy = arr[i];
+            // }
+            // if(profit < (arr[i]-buy)){
+            //     profit = arr[i]-buy;
+            // }
+            
+            buy = Math.min(buy,arr[i]);
+            profit = Math.max(profit,arr[i]-buy);
         }
         return profit;
     }
