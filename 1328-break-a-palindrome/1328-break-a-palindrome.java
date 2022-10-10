@@ -4,8 +4,8 @@ class Solution {
         
         char []p = palindrome.toCharArray();
         
-        for(int i=0;i<palindrome.length();i++){
-            if(p[i] != 'a' && i<palindrome.length()/2){
+        for(int i=0;i<palindrome.length()/2;i++){
+            if(p[i] != 'a' ){
                 p[i]='a';
                 String temp = String.valueOf(p);
                 return temp;
