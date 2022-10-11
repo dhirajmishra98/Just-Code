@@ -10,8 +10,8 @@ class Solution {
                 q.remove();
                 k = temp;
             } else {
-                int d = q.poll();
-                q.offer(d);
+                // int d = q.poll();
+                q.offer(q.poll());
                 
             }
         }
