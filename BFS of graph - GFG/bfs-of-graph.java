@@ -37,7 +37,7 @@ class Solution {
     // Function to return Breadth First Traversal of given graph.
     public ArrayList<Integer> bfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         ArrayList<Integer> arr = new ArrayList<>();
-        boolean[] visited = new boolean[V+1];
+        boolean[] visited = new boolean[V];
         Queue<Integer> q = new LinkedList<>();
         
         q.add(0);
