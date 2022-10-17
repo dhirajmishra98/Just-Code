@@ -11,8 +11,8 @@ class Solution {
             int curr = count(arr,mid);
             
             if(mid == curr) return mid;
-            if(curr > mid) start = mid+1;
-            else end = mid-1;
+            if(curr > mid) start++; //start = mid+1;
+            else end--; //end = mid-1;
         }
         return -1;
     }
