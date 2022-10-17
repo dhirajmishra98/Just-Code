@@ -22,7 +22,7 @@ class Solution {
             arr[i] = new Pair(sum,i);
         }
         
-        //sorting pair according to less soldiers->more soldiers(ascending)
+        //sorting pair, less soldiers->more soldiers(ascending)
         Arrays.sort(arr, (a,b)->a.soldiers-b.soldiers);
         
         int[] result = new int[k];
