@@ -1,7 +1,21 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
-        Arrays.sort(arr);
+        // return binarySearchApproach(arr);
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            map.put(arr[i],i);
+        }
+        
+        for(int i=0;i<arr.length;i++){
+            if(map.containsKey(2*arr[i])){
+                if(map.get(2*arr[i]) != i) return true;
+            }
+        }
+        return false;
+    }
     
+    private boolean binarySearchApproach(int []arr){
+        Arrays.sort(arr);
         for(int i=0;i<arr.length;i++){
             boolean check =  binarySearch(arr,2*arr[i],i);
             if(check) return true;
