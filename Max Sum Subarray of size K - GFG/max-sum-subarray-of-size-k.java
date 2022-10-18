@@ -39,15 +39,12 @@ class Solution{
         long ans = 0;
         long sum = 0;
         while(j<Arr.size()){
+             sum = sum+Arr.get(j);
             if((j-i+1)<K){
-                sum = sum+Arr.get(j);
                 j++;
             } else{
-                if(i>0)
-               sum = sum+Arr.get(j)-Arr.get(i-1);
-               else
-               sum = sum+Arr.get(j);
                ans = Math.max(ans,sum);
+               sum = sum-Arr.get(i);
                i++;
                j++;
             }
