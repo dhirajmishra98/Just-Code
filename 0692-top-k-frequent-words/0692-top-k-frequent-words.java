@@ -7,7 +7,7 @@ class Solution {
         
         
         Queue<Map.Entry<String, Integer>> q = new PriorityQueue<>((a,b)->(a.getValue()==b.getValue()
-                                                                    ?(a.getKey().compareToIgnoreCase(b.getKey()))
+                                                                    ?(a.getKey().compareTo(b.getKey()))
                                                                     :b.getValue()-a.getValue()));
         
         System.out.println(q);
