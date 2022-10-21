@@ -56,6 +56,26 @@ class Solution
     static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
     {
         ArrayList<Integer> ans = new ArrayList<>();
+        PriorityQueue<Integer> p = new PriorityQueue<>(Collections.reverseOrder());
+        
+        int maxi = Integer.MIN_VALUE,i=0,j=0;
+        
+        while(j<n){
+            p.add(arr[j]);
+            if ( (j-i+1)<k ){
+                j++;
+            } else {
+                ans.add(p.peek());
+                p.remove(arr[i]);
+                i++;
+                j++;
+            }
+        }
+        return ans;
+        
+        /*
+        //BruteForce : TC=O(N*K) , SC=O(1)
+        ArrayList<Integer> ans = new ArrayList<>();
         for(int i=0;i<=n-k;i++){
             int temp = Integer.MIN_VALUE;
             for(int j=0;j<k;j++){
@@ -64,5 +84,6 @@ class Solution
             ans.add(temp);
         }
         return ans;
+        */
     }
 }
