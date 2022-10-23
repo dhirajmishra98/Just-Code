@@ -1,5 +1,24 @@
 class Solution {
     public boolean lemonadeChange(int[] bills) {
+        
+        int five=0,ten=0;
+        for(int x : bills){
+            if(x==5) five++;
+            else if(x==10) {ten++; five--;}
+            else{
+                if(ten>0){
+                    ten--;
+                    five--;
+                }else{
+                    five -= 3;
+                }
+            }
+             if(five < 0) return false;
+        }
+        return true;
+        
+        /*
+        //BruteForce : TC=O(N), SC=O(N)
         HashMap<Integer,Integer> map = new HashMap<>();
         for(int i=0;i<bills.length;i++){
             if(bills[i]==5){
@@ -43,7 +62,7 @@ class Solution {
                 }
                 }
             }
-        
         return true;
+        */
     }
 }
