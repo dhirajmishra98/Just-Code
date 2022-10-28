@@ -42,7 +42,7 @@ class Solution
         int i=0,j=0,minlen=Integer.MAX_VALUE;
         int starting_index = 0;
         
-        for(j=0;j<str.length;j++){
+        while(j<str.length){
             if(pmap.containsKey(str[j])){
                 pmap.put(str[j],pmap.get(str[j])-1);
               if(pmap.get(str[j]) >= 0)
@@ -65,7 +65,7 @@ class Solution
             }
             
         }
-        // j++;
+        j++;
         }
         
         if (minlen > str.length)
