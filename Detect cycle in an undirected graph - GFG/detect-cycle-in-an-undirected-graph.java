@@ -43,11 +43,23 @@ class Solution {
     // Function to detect cycle in an undirected graph.
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
        
-        int []visited = new int[V+1];
+        int []visited = new int[V];
         for(int i=0;i<V;i++){
             if(visited[i]==0){
-               if(bfs(visited,i,adj)) return true;
+            //   if(bfs(visited,i,adj)) return true;
+                if(dfs(visited,i,adj,-1)) return true;
             }
+        }
+        return false;
+    }
+    
+    private boolean dfs(int[] visited, int currNode,ArrayList<ArrayList<Integer>> adj,int parent){
+        visited[currNode] = 1;
+        for(Integer x : adj.get(currNode)){
+            if(visited[x]==0){
+                if(dfs(visited,x,adj,currNode)) return true;
+            }
+            else if(x != parent) return true;
         }
         return false;
     }
