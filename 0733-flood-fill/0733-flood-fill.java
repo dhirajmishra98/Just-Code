@@ -20,7 +20,7 @@ class Solution {
         int initial = ans[sr][sc];
         ans[sr][sc] = color;
         visited[sr][sc] = color;
-        q.add(new Pair(sr,sc,ans[sr][sc]));
+        q.add(new Pair(sr,sc,color));
         
         int[] delrow = {-1,0,1,0};
         int[] delcol = {0,1,0,-1};
