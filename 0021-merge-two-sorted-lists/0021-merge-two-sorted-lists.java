@@ -14,20 +14,20 @@ class Solution {
         if(list2==null) return list1;
         
         ListNode dummy = new ListNode(0);
-        ListNode ans = dummy ;
+        ListNode curr = dummy ;
         while(list1!=null && list2!=null){
             if(list1.val <= list2.val){
-                ans.next = list1;
+                curr.next = list1;
                 list1 = list1.next;
             }else {
-                ans.next = list2;
+                curr.next = list2;
                 list2 = list2.next;
             }
-            ans = ans.next;
+            curr = curr.next;
             // System.out.println(ans.val);
         }
         
-        ans.next = list1 == null? list2:list1;
+        curr.next = list1 == null? list2:list1;
         return dummy.next;
     }
 }
