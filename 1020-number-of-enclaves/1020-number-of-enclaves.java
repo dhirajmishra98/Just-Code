@@ -2,7 +2,6 @@ class Solution {
     public int numEnclaves(int[][] grid) {
         int row = grid.length;
         int col = grid[0].length;
-        int count_initial = 0;
         
         int[][] visited = new int[row][col];
         for(int i=0;i<row;i++){
