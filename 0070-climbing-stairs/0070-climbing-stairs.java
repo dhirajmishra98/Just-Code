@@ -12,11 +12,6 @@ class Solution {
         if(n==0) return 1;
         if(n<0) return 0;
         if(dp[n] > 0) return dp[n];
-        // else {
-        //     int left = dptable(n-1,dp);
-        //     int right = dptable(n-2,dp);
-        //     dp[n] = left+right;
-        // }
         
         return dp[n] = dptable(n-1,dp)+dptable(n-2,dp);
     }
