@@ -43,7 +43,8 @@ class Solution
         return memoization(arr,n-1,dp);
         */
         
-        //Tabulation : TC=O()
+        /*
+        //Tabulation : TC=O(N), SC=O(N)
         int[] dp = new int[n];
         dp[0] = arr[0];
         for(int i=1;i<n;i++){
@@ -54,6 +55,21 @@ class Solution
             dp[i] = Math.max(pick,notpick);
         }
         return dp[n-1];
+        */
+        
+        //Tabulation Space Optimized : TC=O(N), SC=O(1)
+        int prev1 = arr[0];
+        int prev2 = 0;
+        for(int i=1;i<n;i++){
+            int pick = arr[i];
+            if(i>1) pick += prev2;
+            
+            int notpick = prev1;
+            int curri= Math.max(pick,notpick);
+            prev2 = prev1;
+            prev1 = curri;
+        }
+        return prev1;
     }
     
     private int memoization(int[] arr, int n, int[] dp){
