@@ -36,10 +36,24 @@ class Solution
     //Function to find the maximum money the thief can get.
     public int FindMaxSum(int arr[], int n)
     {
-        //Memoization 
+        /*
+        //Memoization : TC=O(N), SC=O(N)
         int[] dp = new int[n];
         Arrays.fill(dp,-1);
         return memoization(arr,n-1,dp);
+        */
+        
+        //Tabulation : TC=O()
+        int[] dp = new int[n];
+        dp[0] = arr[0];
+        for(int i=1;i<n;i++){
+            int pick = arr[i];
+            if(i>1) pick+=dp[i-2];
+            
+            int notpick = dp[i-1];
+            dp[i] = Math.max(pick,notpick);
+        }
+        return dp[n-1];
     }
     
     private int memoization(int[] arr, int n, int[] dp){
