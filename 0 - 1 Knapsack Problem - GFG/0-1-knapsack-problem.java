@@ -72,11 +72,33 @@ class Solution
         return memoizationWithPair(n-1,arr,W,dp);
         */
         
+        /*
+        //Memoization : TC=O(N*W), SC=O(N*W)+O(N)
         int[][] dp = new int[n][W+1];
         for(int[] rows : dp){
             Arrays.fill(rows,-1);
         }
         return memoization(n-1,wt,val,W,dp);
+        */
+        
+        //Tabulation
+        int[][] dp = new int[n][W+1];
+        for(int i=wt[0];i<=W;i++){
+            dp[0][i] = val[0];
+        }
+        
+        for(int index = 1;index < n;index++){
+            for(int w = 0;w<=W;w++){
+                int notpick = dp[index-1][w];
+                int pick = Integer.MIN_VALUE;
+                if(wt[index] <= w){
+                    pick = val[index] + dp[index-1][w-wt[index]];
+                }
+                
+                dp[index][w] = Math.max(notpick,pick);
+            }
+        }
+        return dp[n-1][W];
     } 
     
     private int memoization(int n,int[] wt, int[]val, int W,int[][] dp){
