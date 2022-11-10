@@ -58,6 +58,8 @@ class Solution
     //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int W, int wt[], int val[], int n) 
     { 
+        /*
+        //Memoization with Pair class - combine wt,val into a array of pair
         Pair[] arr = new Pair[n];
         for(int i=0;i<n;i++){
             arr[i] = new Pair(wt[i],val[i]);
@@ -67,25 +69,49 @@ class Solution
         for(int[] rows : dp){
             Arrays.fill(rows,-1);
         }
-        return memoization(n-1,arr,W,dp);
+        return memoizationWithPair(n-1,arr,W,dp);
+        */
+        
+        int[][] dp = new int[n][W+1];
+        for(int[] rows : dp){
+            Arrays.fill(rows,-1);
+        }
+        return memoization(n-1,wt,val,W,dp);
     } 
     
-    private int memoization(int n, Pair[] arr, int W,int[][] dp){
+    private int memoization(int n,int[] wt, int[]val, int W,int[][] dp){
         if(n==0){
-            if(arr[n].wt <= W) return arr[n].val;
+            if(wt[n] <= W) return val[n];
              else return 0;
         }
         
         if(dp[n][W] != -1) return dp[n][W];
         
-        int notpick = memoization(n-1,arr,W,dp);
+        int notpick = memoization(n-1,wt,val,W,dp);
         int pick = Integer.MIN_VALUE;
-        if(arr[n].wt <= W){
-            pick = arr[n].val + memoization(n-1,arr,W-arr[n].wt,dp);
+        if(wt[n] <= W){
+            pick = val[n] + memoization(n-1,wt,val,W-wt[n],dp);
         }
         
         return dp[n][W] = Math.max(notpick,pick);
     }
+    
+    // private int memoizationWithPair(int n, Pair[] arr, int W,int[][] dp){
+    //     if(n==0){
+    //         if(arr[n].wt <= W) return arr[n].val;
+    //          else return 0;
+    //     }
+        
+    //     if(dp[n][W] != -1) return dp[n][W];
+        
+    //     int notpick = memoization(n-1,arr,W,dp);
+    //     int pick = Integer.MIN_VALUE;
+    //     if(arr[n].wt <= W){
+    //         pick = arr[n].val + memoization(n-1,arr,W-arr[n].wt,dp);
+    //     }
+        
+    //     return dp[n][W] = Math.max(notpick,pick);
+    // }
 }
 
 
