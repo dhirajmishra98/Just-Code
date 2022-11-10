@@ -81,7 +81,8 @@ class Solution
         return memoization(n-1,wt,val,W,dp);
         */
         
-        //Tabulation
+        /*
+        //Tabulation : TC=O(N*W),SC=O(N*W) 
         int[][] dp = new int[n][W+1];
         for(int i=wt[0];i<=W;i++){
             dp[0][i] = val[0];
@@ -99,6 +100,28 @@ class Solution
             }
         }
         return dp[n-1][W];
+        */
+        
+        //Tabulation - Space Optimized : 
+        int[] prev = new int[W+1];
+        for(int i=wt[0];i<=W;i++){
+            prev[i] = val[0];
+        }
+        
+        for(int i=1;i<n;i++){
+            int[] curr = new int[W+1];
+            for(int j=0;j<=W;j++){
+                int notpick = prev[j];
+                int pick = Integer.MIN_VALUE;
+                if(wt[i]<=j){
+                    pick = val[i] + prev[j-wt[i]];
+                }
+                
+                curr[j] = Math.max(notpick, pick);
+            }
+            prev = curr;
+        }
+        return prev[W];
     } 
     
     private int memoization(int n,int[] wt, int[]val, int W,int[][] dp){
