@@ -102,7 +102,8 @@ class Solution
         return dp[n-1][W];
         */
         
-        //Tabulation - Space Optimized : 
+        /*
+        //Tabulation - Space Optimized : Tc=O(N*W), SC=O(W)
         int[] prev = new int[W+1];
         for(int i=wt[0];i<=W;i++){
             prev[i] = val[0];
@@ -120,6 +121,26 @@ class Solution
                 curr[j] = Math.max(notpick, pick);
             }
             prev = curr;
+        }
+        return prev[W];
+        */
+        
+        //
+        int[] prev = new int[W+1];
+        for(int i=wt[0];i<=W;i++){
+            prev[i] = val[0];
+        }
+        
+        for(int i=1;i<n;i++){
+            for(int j=W;j>=0;j--){
+                int notpick = prev[j];
+                int pick = Integer.MIN_VALUE;
+                if(wt[i]<=j){
+                    pick = val[i] + prev[j-wt[i]];
+                }
+                
+                prev[j] = Math.max(notpick, pick);
+            }
         }
         return prev[W];
     } 
