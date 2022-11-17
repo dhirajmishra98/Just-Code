@@ -12,36 +12,23 @@ class Solution{
 public:
 	#define ll long long
 
-// 	ll countSubarray(int arr[], int n, int k) {
-// 	    ll total = (n*(n+1))/2;
-        
-//         ll ans = 0,count = 0;
-//         for(int i=0;i<n;i++){
-//             if(arr[i] > k){
-//                 ans += ((count*(count+1))/2);
-//                 count=0;
-//             } else {
-//                 count++;
-//             }
-//         }
-//         ans += ((count*(count+1))/2);
-//         return total-ans;
-// 	}
-ll countSubarray(int arr[], int n, int k) {
-	    ll cnt = 0;
-	    int ans = 0;
-	    for(int i=0;i<n;i++){
-	        if(arr[i]>k){
-	            ans = ans + (cnt*(cnt+1)/2);
-	            cnt = 0;
-	        }
-	        else cnt++;
-	    }
-	    ans = ans + (cnt*(cnt+1)/2);
-	    ll N = n;
-	    N = N*(N+1)/2;
-	    return N - ans;
+	ll countSubarray(int arr[], int n, int k) {
+	    
+        ll ans = 0,count = 0;
+        for(int i=0;i<n;i++){
+            if(arr[i] > k){
+                ans = ans + (count*(count+1)/2);
+                count=0;
+            } else {
+                count++;
+            }
+        }
+        ans = ans+ (count*(count+1)/2);
+        ll N = n;
+        ll total = N*(N+1)/2;
+        return total-ans;
 	}
+
 };
 
 //{ Driver Code Starts.
