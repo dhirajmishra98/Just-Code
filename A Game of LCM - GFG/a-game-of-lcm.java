@@ -47,15 +47,21 @@ class Solution {
         //we have to check max lcm got from two Approaches
         
         ans1 = method1(N,N-1,N-2,N-3);
-        ans2 = (N*(N-1))/gcd(N,N-1);
+        ans2 = method2(N);
+        
+        return Math.max(ans1,ans2);
+    }
+    
+    private long method2(long N){
+        long tempGcd = (N*(N-1))/gcd(N,N-1);
         long count = 2;
         for(long i=N-2;i>=1 && count>0 ;i--){
-            if(gcd(ans2,i)==1L){
-                ans2 = ans2*i;
+            if(gcd(tempGcd,i)==1L){
+                tempGcd = tempGcd*i;
                 count--;
             }
         }
-        return Math.max(ans1,ans2);
+        return tempGcd;
     }
     
     private long method1(long i, long j, long k, long l){
