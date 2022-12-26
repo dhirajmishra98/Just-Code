@@ -74,19 +74,12 @@ class Solution{
     }
     
     private long inBuildBinarySearch(long L, long R){
-        int indexL = 0;
-        int indexR = 0;
+        int indexL = Collections.binarySearch(arr,L);
+        indexL = indexL<0 ? -indexL-1 : indexL;
         
-        while(Collections.binarySearch(arr,L) <= -1){
-            L++;
-        }
-        while(Collections.binarySearch(arr,R) <= -1){
-            R--;
-        }
         
-        indexL = Collections.binarySearch(arr,L);
-        indexR = Collections.binarySearch(arr,R);
-        // System.out.println(indexL+" "+indexR);
+        int indexR = Collections.binarySearch(arr,R);
+        indexR = indexR<0 ? -indexR-2 : indexR;
         
         return indexR-indexL+1;
         
