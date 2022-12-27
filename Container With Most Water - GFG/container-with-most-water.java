@@ -36,17 +36,6 @@ class Solve{
     long maxArea(int A[], int len){
         if(len <= 1) return 0;
         
-        /*
-        //BruteForce : TC=O(n2), SC=O(1)
-        long ans = Integer.MIN_VALUE;
-        for(int i=0;i<len;i++){
-            for(int j=0;j<len;j++){
-                ans = Math.max(ans,Math.min(A[i],A[j])*Math.abs(i-j));
-            }
-        }
-        return ans;
-        */
-        
         int i=0,j=len-1;
         long ans = Integer.MIN_VALUE;
         while(i<j){
@@ -55,6 +44,7 @@ class Solve{
             else j--;
         }
         return ans;
+        
     }
     
 }
