@@ -131,8 +131,8 @@ class Solution
     int ans = 0;
     public int singlevalued(Node root)
     {
-        //code here
         if(root.left == null && root.right == null) return 1;
+        
         getSingleValue(root,0);
         
         return ans;
