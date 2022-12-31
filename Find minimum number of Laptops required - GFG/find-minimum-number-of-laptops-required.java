@@ -54,13 +54,8 @@ class Solution {
         }
         
         Arrays.sort(p, (a,b)-> a.start-b.start);
-        int count = 1;
         
-        // for(int i=0;i<N;i++){
-        //     System.out.println(p[i].start + " "+ p[i].end);
-        // }
-        
-        int e = p[0].end;
+        int count = 1, e = p[0].end;
         pq.add(e);
         for(int i=1;i<N;i++){
             if(p[i].start >= pq.peek()){
