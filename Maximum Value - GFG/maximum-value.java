@@ -122,31 +122,28 @@ class Node {
 */
 
 class Solution {
-    ArrayList<Integer> maximumValue(Node node) {
-       ArrayList<Integer> arr = new ArrayList<>();
-       Queue<Node> q = new LinkedList<>();
-       
-       q.add(node);
-       q.add(null);
-       
-       while(!q.isEmpty()){
-           int compared = Integer.MIN_VALUE;
-          
-           while(q.peek() != null){
-               Node temp = q.peek();
-               if(temp.left != null) q.add(temp.left);
-               if(temp.right != null) q.add(temp.right);
-               
-               compared = Math.max(compared, q.peek().data);
-               q.poll();
-           }
-           q.poll();
-           if(q.size() != 0)
-           q.add(null);
-           arr.add(compared);
-       }
-       return arr;
+    /* Complete the Function to get Largest value at each level of Binary Tree */
+    void solve(Node node,int level,ArrayList<Integer> answer)
+    {
+        if(node==null)
+            return ;
+        if(level==answer.size())
+            answer.add(node.data);
+        else{
+            if(answer.get(level)<node.data){
+                answer.set(level,node.data);
+            }
+        }
+        solve(node.left,level+1,answer);
+        solve(node.right,level+1,answer);
     }
+
+    ArrayList<Integer> maximumValue(Node node) {
+        ArrayList<Integer> answer=new ArrayList<Integer>();
+        solve(node,0,answer);
+        return answer;
+    }
+
 }
 
 //{ Driver Code Starts.
