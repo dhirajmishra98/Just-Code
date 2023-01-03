@@ -28,6 +28,9 @@ class GFG {
 
 class Solution {
     public int removeStudents(int[] H, int N) {
+        //Optimized is LIS but TC=O(n2) -> TLE
+        
+        //LIS with Binary Search (intuition from striver's video) : TC=O(NlogN), SC=O(N)
         ArrayList<Integer> arr = new ArrayList<>();
         int len = 1;
         arr.add(H[0]);
@@ -37,12 +40,6 @@ class Solution {
                 arr.add(H[i]);
                 len++;
             } else {
-                // int n = arr.size();
-                // int [] array = new int[n];
-                // for(int j=0;j<n;j++){
-                //     array[j] = arr.get(j);
-                // }
-                // int index = lower_bound(array,H[i]);
                 int index = binarySearch(arr,H[i],0,arr.size());
                 arr.set(index,H[i]); 
             }
@@ -51,38 +48,19 @@ class Solution {
     }
     
     private int binarySearch(ArrayList<Integer> array, int key, int low, int high){
-        int mid;
         while (low < high) {
+            int mid = low + (high - low) / 2;
  
-            // Find the index of the middle element
-            mid = low + (high - low) / 2;
- 
-            // If key is less than or equal
-            // to array[mid], then find in
-            // left subarray
             if (key <= array.get(mid)) {
                 high = mid;
-            }
- 
-            // If key is greater than array[mid],
-            // then find in right subarray
-            else {
- 
+            }else {
                 low = mid + 1;
             }
         }
- 
-        // If key is greater than last element which is
-        // array[n-1] then lower bound
-        // does not exists in the array
+        
         if (low < array.size() && array.get(low) < key) {
             low++;
         }
- 
-        // Returning the lower_bound index
         return low;
     }
-    
-    
- 
 };
