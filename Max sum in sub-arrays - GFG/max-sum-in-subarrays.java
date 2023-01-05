@@ -40,8 +40,7 @@ class Solution {
     {
         long ans = Integer.MIN_VALUE;
         for(int i=1;i<N;i++){
-            long temp = arr[i-1]+arr[i];
-            ans = Math.max(ans,temp);
+            ans = Math.max(ans,arr[i-1]+arr[i]);
         }
         return ans;
     }
