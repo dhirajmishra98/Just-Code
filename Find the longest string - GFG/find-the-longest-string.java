@@ -53,27 +53,22 @@ class GFG {
 
 class Solution {
     public static String longestString(int n, String[] arr) {
+        //TC=O(nlogn)+O(n*m) , SC=O(N)
         if(n==1) return arr[0];
         Arrays.sort(arr);
-        // System.out.println(Arrays.toString(arr));
         HashSet<String> set = new HashSet<>();
         
         for(String x : arr) set.add(x);
-        //  System.out.println(set);
         
         String ans = "";
         for(int i=arr.length-1;i>=0;i--){
             int index=0, count = 0;
-            // System.out.println(arr[i].substring(0,index));
             while(index<arr[i].length() && set.contains(arr[i].substring(0,index+1))){
-                // System.out.println(index);
-                // System.out.println(arr[i].substring(0,index+1));
                 index++;
                 count++;
             }
             
             if(count == arr[i].length() && arr[i].length()>=ans.length()) ans = arr[i];
-            // System.out.println(ans);
         }
         return ans;
     }
