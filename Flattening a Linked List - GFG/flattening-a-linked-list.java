@@ -127,14 +127,6 @@ class GfG
 	    
 	    root = merge(root, root.next);
 	    return root;
-	   
-	   //while(root!=null && root.next!=null){
-    //         Node temp = root.next.next;
-    //          root = merge(root, root.next);
-    //         root.next = temp;
-    //     }
-    //     return root;
-    // }
     }
     
     private Node merge(Node a, Node b){
