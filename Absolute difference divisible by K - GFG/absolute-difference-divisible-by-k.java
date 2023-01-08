@@ -40,6 +40,7 @@ class Solution {
 		return count;
 		*/
 		
+		//Optimized : TC=O(n), SC=O(K)
 		int []remTable = new int[k];
 		for(int x : arr) remTable[x%k]++;
 		
