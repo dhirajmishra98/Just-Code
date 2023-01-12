@@ -11,6 +11,7 @@ import java.io.*;
 
 class Solution {
     long minimizeSum(int N, int arr[]) {
+        //TC=O(nlogn), n for N and logn for insertion in pq, SC=O(N)
         long ans = 0;
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         
