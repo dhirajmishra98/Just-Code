@@ -114,6 +114,21 @@ class GFG {
 }
  */
 
+
+
+/*class Node
+{
+    int data;
+    Node left, right;
+
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}
+ */
+
 class Solution {
     int ans=0, currGcd = 0;
     
