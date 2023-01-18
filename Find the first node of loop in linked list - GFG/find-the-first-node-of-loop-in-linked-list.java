@@ -124,7 +124,6 @@ class Solution {
                     cycleLength++;
                     slow = slow.next;
                 }
-                // System.out.println(cycleLength);
                 break;
             }
         }
@@ -137,8 +136,7 @@ class Solution {
             first = first.next;
             second = second.next;
         }
-        
-         return first.data;
+        return first.data;
         }
         
         return -1;
