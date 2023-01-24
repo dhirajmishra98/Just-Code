@@ -33,20 +33,7 @@ public class Main {
 //User function Template for Java
 
 class Solution {
-    class Pair{
-        int val, index;
-        Pair(int val, int index){
-            this.val = val;
-            this.index = index;
-        }
-    }
     void convert(int[] arr, int n) {
-        // Pair[] p = new Pair[n];
-        // for(int i=0;i<n;i++){
-        //     p[i] = new Pair(arr[i],i);
-        // }
-        
-        // Arrays.sort(p, (a,b)->a.val-b.val);
         int[] temp = arr.clone();
         Arrays.sort(temp);
         HashMap<Integer,Integer> map = new HashMap<>();
@@ -57,5 +44,6 @@ class Solution {
         for(int i=0;i<n;i++){
             arr[i] = map.get(arr[i]);
         }
+        
     }
 }
