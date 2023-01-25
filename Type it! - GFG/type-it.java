@@ -38,6 +38,8 @@ class Solution {
                 }
             }
         }
+        if(maxi == 0)
+        return s.length();
         return s.length()-maxi+1;
     }
 }
