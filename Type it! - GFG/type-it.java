@@ -27,12 +27,15 @@ class GFG {
 
 class Solution {
     int minOperation(String s) {
-        if(s.length()==1) return 1;
+        if(s.length()<=2) return s.length();
         int maxi = 0;
         for(int i=0;i<s.length();i++){
-            String str = s.substring(i+1,s.length());
-            if(str.contains(s.substring(0,i+1))){
+            String ss = s.substring(0,i+1);
+            if(i+i+2 < s.length()){
+                String str = s.substring(i+1,i+i+2);
+                if(str.equals(ss)){
                 maxi = Math.max(maxi,i+1);
+                }
             }
         }
         return s.length()-maxi+1;
