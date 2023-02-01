@@ -80,6 +80,4 @@ class Solution
         head.data = val%10;
         carry = val/10;
     }
-
 }
-
