@@ -10,6 +10,8 @@ import java.util.*;
 
 class Solution{
     public static long distinctColoring(int N, int[]r, int[]g, int[]b){
+        /*
+        //TC=O(N*3), SC=O(N*3)
         long [][]cost = new long[N][3];
         cost[0][0] = r[0]; cost[0][1] = g[0]; cost[0][2] = b[0];
         
@@ -29,6 +31,30 @@ class Solution{
         }
         
         return Math.min(Math.min(cost[N-1][0],cost[N-1][1]),cost[N-1][2]);
+        */
+        
+        //TC=O(N*3), SC=O(3)
+        long []cost = new long[3];
+        cost[0] = r[0]; cost[1] = g[0]; cost[2] = b[0];
+        
+        for(int i=1;i<N;i++){
+            long []temp = new long[3];
+            for(int j=0;j<3;j++){
+                if (j==0){
+                    temp[j] = r[i];
+                    temp[j] += Math.min(cost[j+1],cost[j+2]);
+                } else if (j==1){
+                    temp[j] = g[i];
+                    temp[j] += Math.min(cost[j-1],cost[j+1]);
+                } else {
+                    temp[j] = b[i];
+                    temp[j] += Math.min(cost[j-1],cost[j-2]);
+                }
+            }
+            cost = temp.clone();
+        }
+        
+        return Math.min(Math.min(cost[0],cost[1]),cost[2]);
     }
 }
 
