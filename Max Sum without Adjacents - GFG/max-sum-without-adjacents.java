@@ -10,6 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out=new PrintWriter(System.out);
         int tc = Integer.parseInt(br.readLine().trim());
         while (tc-- > 0) {
             String[] inputLine;
@@ -21,8 +22,9 @@ public class Main {
             }
 
             int ans = new Solution().findMaxSum(arr, n);
-            System.out.println(ans);
+            out.println(ans);
         }
+        out.close();
     }
 }
 // } Driver Code Ends
@@ -32,36 +34,20 @@ public class Main {
 
 class Solution {
     int findMaxSum(int arr[], int n) {
-        /*
-        //Normal Recursive solution give TLE -> implement DP memoization
-        //TC=O(N), SC=O(N)
-        int []dp = new int[n];
-        Arrays.fill(dp,-1);
-        return memoization(arr,n-1,dp);
-        */
-        
         int[] dp = new int[n];
-        dp[0] = arr[0];
-        
-        for(int i=1;i<n;i++){
-           int pick = arr[i];
-           if(i>1)
-           pick+=dp[i-2];
-           
-           int notpick = dp[i-1];
-           dp[i] = Math.max(pick,notpick);
-        }
-        return dp[n-1];
+        Arrays.fill(dp,-1);
+        return helper(arr,n-1,dp);
     }
     
-    private int memoization(int[] arr, int size,int[] dp){
-        if(size<0) return 0;
-        if(dp[size] != -1) return dp[size];
+    private int helper(int[] arr, int ind,int[] dp){
+        if(ind==0) return arr[0];
+        if(ind <= 1) return Math.max(arr[1],arr[0]);
+        if(dp[ind]!=-1) return dp[ind];
+        if(ind<0) return 0;
         
-        int pick = arr[size]+memoization(arr,size-2,dp);
-        int notpick = memoization(arr,size-1,dp);
+        int pick = arr[ind]+helper(arr,ind-2,dp);
+        int notpick = helper(arr,ind-1,dp);
         
-        return dp[size] = Math.max(pick,notpick);
-        // return Math.max(arr[size]+memoization(arr,size-2),memoization(arr,size-1));
+        return dp[ind] = Math.max(pick,notpick);
     }
 }
