@@ -33,6 +33,59 @@ public class Main{
 
 // User function Template for Java
 
+class DisjointSet {
+    List<Integer> rank = new ArrayList<>();
+    List<Integer> parent = new ArrayList<>();
+    List<Integer> size = new ArrayList<>(); 
+    public DisjointSet(int n) {
+        for(int i = 0;i<=n;i++) {
+            rank.add(0); 
+            parent.add(i); 
+            size.add(1); 
+        }
+    }
+
+    public int findUPar(int node) {
+        if(node == parent.get(node)) {
+            return node; 
+        }
+        int ulp = findUPar(parent.get(node)); 
+        parent.set(node, ulp); 
+        return parent.get(node); 
+    }
+
+    public void unionByRank(int u, int v) {
+        int ulp_u = findUPar(u); 
+        int ulp_v = findUPar(v); 
+        if(ulp_u == ulp_v) return; 
+        if(rank.get(ulp_u) < rank.get(ulp_v)) {
+            parent.set(ulp_u, ulp_v); 
+        }
+        else if(rank.get(ulp_v) < rank.get(ulp_u)) {
+            parent.set(ulp_v, ulp_u); 
+        }
+        else {
+            parent.set(ulp_v, ulp_u); 
+            int rankU = rank.get(ulp_u); 
+            rank.set(ulp_u, rankU + 1); 
+        }
+    }
+    
+    public void unionBySize(int u, int v) {
+        int ulp_u = findUPar(u); 
+        int ulp_v = findUPar(v); 
+        if(ulp_u == ulp_v) return; 
+        if(size.get(ulp_u) < size.get(ulp_v)) {
+            parent.set(ulp_u, ulp_v); 
+            size.set(ulp_v, size.get(ulp_v) + size.get(ulp_u)); 
+        }
+        else {
+            parent.set(ulp_v, ulp_u); 
+            size.set(ulp_u, size.get(ulp_u) + size.get(ulp_v));
+        }
+    }
+}
+
 class Solution{
     class Pair{
         int wt,node;
@@ -41,8 +94,22 @@ class Solution{
             this.node = node;
         }
     }
+    class Edge implements Comparable<Edge>{
+        int wt,u,v;
+        Edge(int u, int v, int wt){
+            this.wt = wt;
+            this.u = u;
+            this.v = v;
+        }
+        
+        public int compareTo(Edge compareEdge) {
+        return this.wt - compareEdge.wt;
+        }
+    }
+    
 	int spanningTree(int V, int E, int edges[][]){
-	    //prims Algorit
+	    /*
+	    //prims Algorithm : TC=O(ElogE), SC=O(E)
 	    ArrayList<ArrayList<Pair>> adjList = getAdjList(V,E,edges);
 	    int sum = 0;
 	    PriorityQueue<Pair> pq = new PriorityQueue<>((x,y)->x.wt-y.wt);
@@ -55,20 +122,49 @@ class Solution{
 	        pq.remove();
 	        
 	        if(visited[node] == 1) continue;
-	        visited[node] = 1;
+	        visited[node] = 1; //mark visited while adding to cost
 	        sum += wt;
 	        
 	        for(Pair x : adjList.get(node)){
 	            int adjNode = x.node;
 	            int adjWt = x.wt;
 	            
-	            if(visited[adjNode] == 0){
+	            if(visited[adjNode] == 0){ //dont mark visited here
 	                pq.add(new Pair(adjWt,adjNode));
 	            }
 	        }
 	    }
 	    
 	    return sum;
+	    */
+	    
+	    //Krushkal's Algorithm : TC=
+	   ArrayList<Edge> adjList = getList(V,E,edges);
+	   Collections.sort(adjList);
+	   int result = 0;
+	   DisjointSet ds = new DisjointSet(V);
+	   for(int i=0;i<E;i++){
+	       int u = adjList.get(i).u;
+	       int v = adjList.get(i).v;
+	       int wt = adjList.get(i).wt;
+	       
+	       if(ds.findUPar(u) != ds.findUPar(v)){
+	           result += wt;
+	           ds.unionBySize(u, v);
+	       }
+	   }
+	   
+	    return result;
+	}
+	
+	private ArrayList<Edge> getList(int V, int E, int[][]edges){
+	    ArrayList<Edge> adjList = new ArrayList<>();
+	    
+	    for(int i=0;i<E;i++){
+	        adjList.add(new Edge(edges[i][0],edges[i][1],edges[i][2]));
+	    }
+	    
+	    return adjList;
 	}
 	
 	private ArrayList<ArrayList<Pair>> getAdjList(int V, int E, int[][]edges){
