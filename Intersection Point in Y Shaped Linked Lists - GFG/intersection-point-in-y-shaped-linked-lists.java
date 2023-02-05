@@ -133,7 +133,8 @@ class Intersect
     //Function to find intersection point in Y shaped Linked Lists.
 	int intersectPoint(Node head1, Node head2)
 	{
-	    Node head11 = head1;
+         // code here
+         Node head11 = head1;
 	    Node head22 = head2;
 	    boolean flag1=false, flag2=false;
         while(head1!=head2){
