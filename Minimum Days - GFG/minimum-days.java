@@ -64,23 +64,17 @@ class GFG {
 
 class Solution {
     public static int getMinimumDays(int N, String S, int[] P) {
-        // code here
-        int count = 0;
-        int k = 0,i=0;
+        int count = 0,k = 0;
         char []s = S.toCharArray();
-        for(i=0;i<N-1;i++){
+        for(int i=0;i<N-1;i++){
             if(s[i]!=s[i+1]) continue;
             
             while(i<N-1 && s[i]==s[i+1] && k<N){
                 if(s[i]=='?' && s[i]==s[i+1]) break;
                 count++;
-                
                 s[P[k++]] = '?';
-                // System.out.println(k);
             }
         }
-        // if(s[i] == s[i-1]) count++;
-        
         return count;
     }
 }
