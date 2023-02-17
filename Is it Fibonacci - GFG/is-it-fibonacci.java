@@ -108,6 +108,7 @@ class FastIO
 
 class Solution {
     static long solve(int N, int K, ArrayList<Long> GeekNum) {
+        //code here
         int j=0, i = 0;
         long total = 0;
         while(j<N){
