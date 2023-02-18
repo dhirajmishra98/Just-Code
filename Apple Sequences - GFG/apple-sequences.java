@@ -34,10 +34,10 @@ class Solution{
     public static int appleSequence(int n, int m, String arr){
         int i=0,j=0,countO=0,result = Integer.MIN_VALUE;
         while(j<n){
-            if(countO<=m){
+            // if(countO<=m){
                 
                 if(arr.charAt(j)=='O') countO++;
-            }
+            // }
             
             while(countO>m){
                 if(arr.charAt(i)=='O') countO--;
