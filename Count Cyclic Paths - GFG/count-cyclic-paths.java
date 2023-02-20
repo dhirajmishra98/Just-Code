@@ -10,7 +10,8 @@ import java.util.*;
 
 class Solution{
 	public static int countPaths(int N){
-	    if(N==1) return 0;
+		//code here
+		if(N==1) return 0;
 	    if(N==2) return 3;
 		long temp1 = 0, temp2 = 3, mod = (int)1e9+7;
 		long ans = 0;
