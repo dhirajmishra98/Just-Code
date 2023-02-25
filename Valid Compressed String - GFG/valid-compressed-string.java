@@ -23,6 +23,7 @@ class GFG {
 
 class Solution {
     static int checkCompressed(String S, String T) {
+        // code here
         int i=0,j=0,m=S.length(),n=T.length();
         while(i<m && j<n){
             if(Character.isDigit(T.charAt(j))){
