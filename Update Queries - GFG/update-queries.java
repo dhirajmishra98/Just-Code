@@ -39,15 +39,14 @@ class GFG{
 class Solution{
 	int [] updateQuery(int N, int Q, int [][]U){
 	    //bruteforce gives TLE
-       int ans[]=new int[N];
-       for(int []a:U){
-           int l=a[0];
-           int r=a[1];
-           int x=a[2];
-           for(int i=l-1;i<r;i++){
-               ans[i]=ans[i] |x;
-           }
-       }
-        return ans;
+       int[] result = new int[N];
+        for(int i=0;i<U.length;i++){
+            int l = U[i][0], r = U[i][1], x = U[i][2];
+            
+            for(int j=l-1;j<r;j++){
+                result[j] = result[j]|x;
+            }
+        }
+        return result;
     }
 }
