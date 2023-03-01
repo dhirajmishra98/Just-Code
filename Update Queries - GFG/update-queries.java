@@ -38,7 +38,8 @@ class GFG{
 
 class Solution{
 	int [] updateQuery(int N, int Q, int [][]U){
-       int[] result = new int[N];
+        //Write your code here
+        int[] result = new int[N];
         for(int i=0;i<Q;i++){
             int l = U[i][0], r = U[i][1], x = U[i][2];
             
