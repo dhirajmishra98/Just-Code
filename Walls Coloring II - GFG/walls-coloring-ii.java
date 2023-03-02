@@ -32,7 +32,7 @@ class GFG{
 //User function Template for Java
 
 class Solution{
-    class Pair{
+	class Pair{
         int val,ind;
         Pair(int val,int ind){
             this.val = val;
