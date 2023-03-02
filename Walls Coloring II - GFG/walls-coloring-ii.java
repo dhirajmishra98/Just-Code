@@ -59,7 +59,7 @@ class Solution{
 		    Pair secondMin = pq.poll();
 		    Pair firstMin = pq.poll();
 		    for(int j=0;j<k;j++){
-		        int currCost = cost[i][j], currIndex = j;
+		        int currCost = cost[i][j];
 		        if(j==firstMin.ind){ //use second min
 		            currCost += secondMin.val;
 		        }else{ //for all rest use first min
@@ -69,10 +69,10 @@ class Solution{
 		        if(pq.size()==2){
 		            if(currCost < pq.peek().val){
 		                pq.poll();
-		                pq.add(new Pair(currCost,currIndex));
+		                pq.add(new Pair(currCost,j));
 		            }
 		        }else{
-		            pq.add(new Pair(currCost,currIndex));
+		            pq.add(new Pair(currCost,j));
 		        }
 		    }
 		}
