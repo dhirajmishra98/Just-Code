@@ -29,12 +29,12 @@ class GFG{
 //User function Template for Java
 
 class Solution{
-    List<Long> minimumSquares(long L, long B)
+    static List<Long> minimumSquares(long L, long B)
     {
         ArrayList<Long> list = new ArrayList<>();
         
         long side = gcd(L,B);
-        // for(int i=1;i<=Math.min(L,B);i++){
+        // for(int i=1;i<=Math.min(L,B);i++){ //finding the greatest common divisior
         //     if(L%i==0 && B%i==0){
         //         side = Math.max(side,i);
         //     }
@@ -48,7 +48,7 @@ class Solution{
         return list;
     }
     
-    private long gcd(long a, long b){
+    private static long gcd(long a, long b){
         if(b==0) return a;
         return gcd(b,a%b);
     }
