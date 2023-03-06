@@ -25,7 +25,7 @@ class GFG {
 
 
 class Solution {
-    public int noConseBits(int n) {
+    public static int noConseBits(int n) {
         char []binary = new StringBuilder(Integer.toBinaryString(n)).reverse().toString().toCharArray();
         // System.out.println(Arrays.toString(binary));
         int ans =0, check = 0;
@@ -42,4 +42,4 @@ class Solution {
         return ans;
     }
 }
-// 10011000001101
+        
