@@ -7,7 +7,6 @@ using namespace std;
 // } Driver Code Ends
 //User function Template for C++
 
-
 class Solution {
     public:
         long long int maximizeMinHeight(int n, int k, int w, vector <int> &a) {
@@ -52,8 +51,6 @@ class Solution {
             return mn - 1;
         }
 };
-
-
 
 //{ Driver Code Starts.
 
