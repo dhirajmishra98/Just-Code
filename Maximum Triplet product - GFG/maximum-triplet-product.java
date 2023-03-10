@@ -13,6 +13,7 @@ import java.util.*;
 class Solution {
     Long maxTripletProduct(Long arr[], int n)
     {
+        //TC = O(N)
         long min1 = Integer.MAX_VALUE, min2 = Integer.MAX_VALUE;
         long max1 = Integer.MIN_VALUE, max2 = Integer.MIN_VALUE, max3 = Integer.MIN_VALUE;
         
