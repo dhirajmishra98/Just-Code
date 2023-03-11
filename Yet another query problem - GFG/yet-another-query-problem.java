@@ -103,6 +103,7 @@ class GFG {
 
 class Solution {
     public static ArrayList<Integer> solveQueries(int n, int num, int[] a, int[][] q) {
+        //BruteForce : TC=O(N2), SC=O(N2)
         ArrayList<Integer> result = new ArrayList<>();
         int []freq = new int[n];
         
@@ -128,6 +129,7 @@ class Solution {
         }
         
         return result;
+        
     }
 }
         
