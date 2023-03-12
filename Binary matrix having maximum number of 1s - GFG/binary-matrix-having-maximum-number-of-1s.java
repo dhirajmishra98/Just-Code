@@ -66,14 +66,11 @@ class Solution {
         for(int i=0;i<N;i++){
             int index = 0;
             while(index<N && mat[i][index]!=1) index++;
-            
-            
-                if(result[1]<N-index){
-                result[0] = i;
-                result[1] = N-index;
-                }
-            
-            
+
+            if(result[1]<N-index){
+            result[0] = i;
+            result[1] = N-index;
+            }
         }
         
         return result;
