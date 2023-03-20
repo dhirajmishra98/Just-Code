@@ -35,7 +35,11 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    static int shortestXYDist(ArrayList<ArrayList<Character>> grid, int N, int M) {
+    static int shortestXYDist(ArrayList<ArrayList<Character>> grid, int N,
+                              int M) {
+        // Expected Time Complexity: O(N*M)
+        // Expected Auxiliary Space: O(N*M)
+        
         int result = Integer.MAX_VALUE;
         ArrayList<int[]> x = new ArrayList<>();
         ArrayList<int[]> y = new ArrayList<>();
