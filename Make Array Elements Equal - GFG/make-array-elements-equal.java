@@ -31,6 +31,7 @@ class GFG {
 class Solution {
     public long minOperations(int N) {
         // Code here
+        // Code here
         // 2-1
         // 3-2
         // 4-4
