@@ -51,6 +51,7 @@ class GFG {
 
 class Solution {
     public static ArrayList<Integer> makeBeautiful(int[] arr) {
+        // code here
         ArrayList<Integer> answer = new ArrayList<Integer>(); //answerlist
         for (int i : arr) {
             if (answer.size() == 0) {
