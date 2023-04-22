@@ -9,6 +9,7 @@ using namespace std;
 class Solution{
 public:
     vector<long long> smallerSum(int n,vector<int> &arr){
+        // Code here
         vector<pair<int,int>>v(n);
     for(int i=0;i<n;i++)v[i]={arr[i],i};
     
