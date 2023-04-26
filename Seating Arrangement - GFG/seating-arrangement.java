@@ -30,7 +30,6 @@ class GFG {
 
 class Solution {
     public static boolean is_possible_to_get_seats(int n, int m, int[] seats) {
-        // code here
         if(m==1 && seats[0]==0 && n==1) return true;
         for(int i=0;i<m;i++){
             if(i==0){
